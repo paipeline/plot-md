@@ -1,0 +1,4 @@
+interface:
+  display_name: "Customize Plot.md"
+  short_description: "Safely tailor semantic Markdown preview templates"
+  default_prompt: "Use $customize-semantic-markdown to adapt this project’s semantic Markdown preview without adding scripts or CSS."

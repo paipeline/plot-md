@@ -1,0 +1,4 @@
+interface:
+  display_name: "Storyify Markdown"
+  short_description: "Turn technical Markdown into a vivid reading journey"
+  default_prompt: "Use $storyify-markdown to turn this technical document into a vivid, fact-preserving reading journey."

@@ -1,0 +1,120 @@
+{
+  "name": "plot-md",
+  "displayName": "Plot.md — Story Renderer for Technical Markdown",
+  "description": "Make technical Markdown read like a story with semantic visuals, memes, reveals, and checkpoints.",
+  "version": "0.0.5",
+  "publisher": "paipeline",
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/paipeline/plot-md.git"
+  },
+  "homepage": "https://github.com/paipeline/plot-md#readme",
+  "bugs": {
+    "url": "https://github.com/paipeline/plot-md/issues"
+  },
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Other",
+    "Visualization"
+  ],
+  "keywords": [
+    "markdown",
+    "agents",
+    "agent-skills",
+    "preview",
+    "semantic",
+    "technical-writing",
+    "storytelling"
+  ],
+  "main": "./dist/src/extension/extension.js",
+  "activationEvents": [
+    "onLanguage:markdown",
+    "onCommand:semanticMarkdown.initializeProject",
+    "onCommand:semanticMarkdown.openPreview",
+    "onCommand:semanticMarkdown.validateCurrentFile",
+    "onCommand:semanticMarkdown.openCustomizationGuide"
+  ],
+  "contributes": {
+    "markdown.markdownItPlugins": true,
+    "markdown.previewStyles": [
+      "./media/preview.css"
+    ],
+    "commands": [
+      {
+        "command": "semanticMarkdown.initializeProject",
+        "title": "Initialize Project",
+        "category": "Plot.md"
+      },
+      {
+        "command": "semanticMarkdown.openPreview",
+        "title": "Open Preview",
+        "category": "Plot.md",
+        "icon": "$(open-preview)"
+      },
+      {
+        "command": "semanticMarkdown.validateCurrentFile",
+        "title": "Validate Current File",
+        "category": "Plot.md",
+        "icon": "$(pass)"
+      },
+      {
+        "command": "semanticMarkdown.openCustomizationGuide",
+        "title": "Open Agent Customization Guide",
+        "category": "Plot.md"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "semanticMarkdown.openPreview",
+          "when": "editorLangId == markdown",
+          "group": "navigation@11"
+        },
+        {
+          "command": "semanticMarkdown.validateCurrentFile",
+          "when": "editorLangId == markdown",
+          "group": "navigation@12"
+        }
+      ]
+    }
+  },
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": "limited",
+      "description": "Built-in templates still render, but project template overrides are disabled."
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node --test dist/test/*.test.js",
+    "check": "npm run typecheck && npm test",
+    "render:dataset": "npm run build && node scripts/render-dataset-example.mjs",
+    "package": "npm run check && vsce package --no-dependencies --allow-missing-repository"
+  },
+  "devDependencies": {
+    "@types/markdown-it": "^14.1.2",
+    "@types/node": "^22.15.0",
+    "@types/vscode": "^1.100.0",
+    "@vscode/vsce": "^3.6.0",
+    "markdown-it": "^14.1.0",
+    "typescript": "^5.8.3"
+  },
+  "files": [
+    "dist/src",
+    "media",
+    "skills",
+    "examples",
+    "docs",
+    "README.md",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "SECURITY.md",
+    "CODE_OF_CONDUCT.md",
+    "LICENSE"
+  ]
+}
